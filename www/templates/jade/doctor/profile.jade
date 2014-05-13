@@ -1,0 +1,73 @@
+{% extends 'jade/base.jade' %}
+{% load staticfiles %}
+{% block content %}
+
+
+{% if is_doctor %}
+button.btn.btn-success.btn-lg(data-toggle='modal', data-target='.bs-doctor-waiting-room-modal-lg', onclick="window.tokdoc.init_waiting_room()") View Waiting Room
+{% else %}
+button.btn.btn-success.btn-lg(data-toggle='modal', data-target='.bs-patient-waiting-room-modal-lg', onclick="window.tokdoc.init_waiting_room()") Join Waiting Room
+{% endif %}
+
+
+#doctor_waiting_room
+    .modal.fade.bs-doctor-waiting-room-modal-lg(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true', data-bind="click: end_call") ×
+                    h4#myLargeModalLabel.modal-title Your waiting room
+                .modal-body
+                    video#localDoctorVideo(height="300")
+                    #doctorRemotesVideos
+                    #start_call.button.btn.btn-primary(type='submit', data-bind="click: start_call, visible:!call_in_progress()") start call
+                    #end_call.button.btn.btn-primary(type='submit', data-bind="click: end_call, visible:call_in_progress") end call
+
+
+#patient_waiting_room
+    .modal.fade.bs-patient-waiting-room-modal-lg(tabindex='-1', role='dialog', aria-labelledby='myLargeModalLabel', aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true', data-bind="click: doctor_call_ended") ×
+                    h4#myLargeModalLabel.modal-title You are in the waiting room
+
+
+                .modal-body
+                    video#localPatientVideo(height="300")
+                    #patientRemotesVideos
+
+                    p(data-bind="text: number_of_patients_ahead") number of patients ahead
+                    #call_started(data-bind="visible: call_started")
+                        p call started
+                    #session_ended(data-bind="visible: session_ended")
+                        p your session has ended
+
+
+
+
+
+{% endblock %}
+
+{% block footer_scripts %}
+
+
+script(src="http://simplewebrtc.com/latest.js")
+
+{% if is_logged_in %}
+script
+    window.tokdoc.navbar.show_user_login(false)
+{% else %}
+script
+    window.tokdoc.navbar.show_user_login(true)
+{% endif %}
+
+{% if is_doctor %}
+script(src="{% static 'js/app/doctor/waiting_room.js' %}")
+{% else %}
+script(src="{% static 'js/app/patient/waiting_room.js' %}")
+{% endif %}
+
+
+{% endblock %}
+

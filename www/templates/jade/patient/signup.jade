@@ -1,0 +1,11 @@
+{% extends 'jade/base.jade' %}
+{% load staticfiles %}
+{% block content %}
+.container
+  .row
+    .col-md-6.col-md-offset-3
+      h1.margin-base-vertical.text-center New Patient
+      form(role='form', action='/signup/patient/', method='post') {% csrf_token %}
+        {{ form.as_p }}
+        button.btn.btn-default(type='submit') Submit
+{% endblock %}

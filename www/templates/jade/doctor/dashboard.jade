@@ -1,0 +1,54 @@
+{% extends 'jade/base.jade' %}
+{% load staticfiles %}
+{% block content %}
+
+.container
+    #dashboard
+        .row.clearfix
+           .col-md-9.column
+
+              .walk-in-video-chat.row.clearfix
+                .col-md-12.column
+                  .row.clearfix
+                    .col-md-3.column
+                      span.label.label-default(data-bind="text: speaking_with_patient().full_name")
+                      .row.clearfix
+                        .col-md-12.column
+                            p(data-bind="text: speaking_with_patient().problem")
+                            p info 2
+                    .col-md-9.column
+                        .row.clearfix
+                            #remoteVideo
+                            video#localVideo(autoplay='true')
+                        .row.clearfix
+                            button.btn.btn-default(type='button', data-bind="click: speaking_with_patient().end_call") end call
+
+              .row.clearfix(data-bind="foreach: waiting_patients")
+                patient_waiting.col-md-12.column
+                  .row.clearfix
+                    .col-md-4.column
+                        p(data-bind="text: full_name")
+                    .col-md-4.column
+                        p Male Age 55 Waiting for 3 mins and 2 seconds
+                        p(data-bind="text: problem")
+                    .col-md-4.column
+                        button.btn.btn-defualt(type='button') end and answer
+            .walk-in-patient-detials.col-md-3.column
+              .row.clearfix
+                .col-md-12.column
+                    p(data-bind="text: speaking_with_patient().full_name")
+              .row.clearfix
+                .col-md-12.column
+                    p(data-bind="text: speaking_with_patient().age")
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+
+script(src="/socket.io/socket.io.js)
+script(src="http://simplewebrtc.com/latest.js")
+script(src="{% static 'js/app/doctor/dashboard.js' %}")
+
+
+{% endblock %}

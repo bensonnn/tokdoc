@@ -1,0 +1,26 @@
+{% extends 'jade/base.jade' %}
+{% load staticfiles %}
+{% block content %}
+
+.container
+    a(href='/dashboard/')
+        .home_card.row.clearfix
+            .col-md-12.column
+                .row.clearfix
+                    .col-md-12.column
+                        p.text-center 5 patients are in the waiting queue
+    a(href='/')
+        .home_card.row.clearfix
+            .col-md-12.column
+                .row.clearfix
+                    .col-md-12.column
+                        p.text-center Next scheduled appointment is in 5 hours and 23 mins
+
+
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+script(src="{% static 'js/app/doctor/home.js' %}")
+{% endblock %}

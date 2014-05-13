@@ -1,0 +1,111 @@
+.container {
+	width: 1170px !important;
+}
+
+@font-face {
+font-family: ProximaNova;
+font-weight: normal;
+src: url("../fonts/ProximaNova-Bold.otf") format("opentype");
+}
+
+@font-face {
+font-family: ProximaNova;
+font-weight: bold;
+src: url("../fonts/ProximaNova-Xbold.otf") format("opentype");
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "ProximaNova", Helvetica, Arial, sans-serif!important;
+    font-weight: bold;
+}
+
+.btn {
+	font-family: "ProximaNova", Helvetica ;
+	font-weight: bold!important;
+}
+.btn-primary {
+	background-color: #ff534f;
+	border:none;
+	border-radius: 2px;
+	text-shadow: none;
+	padding: 10px 14px;
+}
+
+
+body {
+	font-size: 13px;
+}
+
+.header1 {
+	background: url("../img/grain.png") repeat;
+	color: white;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+	padding: 60px 0 70px 0;
+	height: 450px;
+}
+.header1 h3 {
+	padding-top: 30px;
+}
+.header1 p{
+	padding: 15px 0;
+
+}
+.header1 img {
+	padding-left: 20px;
+}
+
+.meet-our-doctors {
+	background-color: #527983;
+}
+
+.white {
+	color: white;
+}
+
+.modal-dialog {
+	width: 1000px;
+	border-radius: none;
+}
+.modal-content {
+	border-radius: none;
+}
+.modal-header {
+	background-color: #ebebec;
+}
+.modal-dialog .modal-body button{
+	width: 300px;
+	background-color: white;
+	border-radius: 2px;
+	font-size: 12px;
+	border: 2px solid #e2e2e2;
+	padding: 13px 0;
+}
+
+.modal-dialog .modal-body .btn.active {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background-color: #5fc6c4!important;
+	color: white;
+	border: 2px solid #5fc6c4!important;
+}
+.modal-dialog .modal-body .btn:hover {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background-color: #5fc6c4!important;
+	color: white;
+	border: 2px solid #5fc6c4!important;
+}
+footer {
+	display: none: ;
+}

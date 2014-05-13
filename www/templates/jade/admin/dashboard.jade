@@ -1,0 +1,25 @@
+{% extends 'jade/base.jade' %}
+{% load staticfiles %}
+{% block content %}
+
+
+
+.container
+    #dashboard
+        .row.clearfix
+            .col-md-12.column(data-bind="foreach: waiting_rooms")
+              .row.clearfix
+                .col-md-6.column
+                    p(data-bind="text: waiting_room_number")
+                .col-md-6.column
+                    p(data-bind="text: users_waiting")
+
+{% endblock %}
+
+
+{% block footer_scripts %}
+
+script(src="/socket.io/socket.io.js)
+script(src="{% static 'js/app/admin/dashboard.js' %}")
+
+{% endblock %}

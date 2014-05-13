@@ -1,0 +1,15 @@
+{% extends 'jade/base.jade' %}
+{% load staticfiles %}
+{% block content %}
+
+.content
+    #patient_home
+        #doctor_contacts(data-bind="foreach: doctor_contacts")
+            p(data-bind="text: email, click:view_profile_click")
+
+
+{% endblock %}
+
+{% block footer_scripts %}
+script(src="{% static 'js/app/patient/home.js' %}")
+{% endblock %}
